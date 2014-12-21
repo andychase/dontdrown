@@ -13,6 +13,7 @@ import com.jme3.shadow.DirectionalLightShadowRenderer
 class SunMoonSsao(private var rootNode: Node) extends MiniAppState {
   val SHADOWMAP_SIZE = 2048
   var time: Float = 3.14f
+  val timeScale: Int = 80
   val sunPosition: Vector3f = new Vector3f(1, 0, 0)
 
   val sun = new DirectionalLight()
@@ -64,9 +65,9 @@ class SunMoonSsao(private var rootNode: Node) extends MiniAppState {
   }
 
   override def update(tpf: Float) {
-    time += tpf / 8
+    time += tpf / timeScale
     if (FastMath.sin(time) > 0)
-      time += tpf / 8
+      time += tpf / timeScale
     val y = FastMath.sin(time)
     sunPosition.setY(y)
     sunPosition.setX(FastMath.cos(time))
