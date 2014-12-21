@@ -59,13 +59,13 @@ import java.io.IOException;
  * using the {@link com.jme3.app.StatsAppState} AppState. It will display
  * the current frames-per-second value on-screen in addition to the statistics.
  * Several keys have special functionality in <code>SimpleApplication</code>:<br/>
- *
+ * <p>
  * <table>
  * <tr><td>Esc</td><td>- Close the application</td></tr>
  * <tr><td>C</td><td>- Display the camera position and rotation in the console.</td></tr>
  * <tr><td>M</td><td>- Display memory usage in the console.</td></tr>
  * </table>
- *
+ * <p>
  * A {@link com.jme3.app.FlyCamAppState} is by default attached as well and can
  * be removed by calling <code>stateManager.detach( stateManager.getState(FlyCamAppState.class) );</code>
  */
@@ -93,7 +93,7 @@ public abstract class SimpleApplication2 extends Application {
 
             if (name.equals(INPUT_MAPPING_EXIT)) {
                 stop();
-            }else if (name.equals(INPUT_MAPPING_HIDE_STATS)){
+            } else if (name.equals(INPUT_MAPPING_HIDE_STATS)) {
                 if (stateManager.getState(StatsAppState.class) != null) {
                     stateManager.getState(StatsAppState.class).toggleStats();
                 }
@@ -112,11 +112,12 @@ public abstract class SimpleApplication2 extends Application {
                     ImageIO.read(getClass().getResourceAsStream("/Icons/32.png")),
                     ImageIO.read(getClass().getResourceAsStream("/Icons/16.png")),
             });
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         start();
     }
 
-    public SimpleApplication2( AppState... initialStates ) {
+    public SimpleApplication2(AppState... initialStates) {
         super();
 
         if (initialStates != null) {
@@ -160,8 +161,8 @@ public abstract class SimpleApplication2 extends Application {
 
     /**
      * Retrieves guiNode
-     * @return guiNode Node object
      *
+     * @return guiNode Node object
      */
     public Node getGuiNode() {
         return guiNode;
@@ -169,8 +170,8 @@ public abstract class SimpleApplication2 extends Application {
 
     /**
      * Retrieves rootNode
-     * @return rootNode Node object
      *
+     * @return rootNode Node object
      */
     public Node getRootNode() {
         return rootNode;
@@ -182,16 +183,16 @@ public abstract class SimpleApplication2 extends Application {
 
     /**
      * Toggles settings window to display at start-up
-     * @param showSettings Sets true/false
      *
+     * @param showSettings Sets true/false
      */
     public void setShowSettings(boolean showSettings) {
         this.showSettings = showSettings;
     }
 
     /**
-     *  Creates the font that will be set to the guiFont field
-     *  and subsequently set as the font for the stats text.
+     * Creates the font that will be set to the guiFont field
+     * and subsequently set as the font for the stats text.
      */
     protected BitmapFont loadGuiFont() {
         return assetManager.loadFont("Interface/Fonts/Default.fnt");

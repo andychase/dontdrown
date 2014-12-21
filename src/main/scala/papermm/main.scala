@@ -8,32 +8,32 @@ import papermm.resources.HeroGfx
 import papermm.worlds.SmileWorld
 
 object main extends SimpleApplication2 with App {
-  val worldNode: Node = new Node("WorldNode")
-  worldNode.setShadowMode(ShadowMode.CastAndReceive)
+    val worldNode: Node = new Node("WorldNode")
+    worldNode.setShadowMode(ShadowMode.CastAndReceive)
 
-  def simpleInitApp() {
-    rootNode attachChild worldNode
+    def simpleInitApp() {
+        rootNode attachChild worldNode
 
-    // Lights
-    val sunMoonSsao = new SunMoonSsao(worldNode)
-    stateManager attach sunMoonSsao
+        // Lights
+        val sunMoonSsao = new SunMoonSsao(worldNode)
+        stateManager attach sunMoonSsao
 
-    // Camera
-    chaseCam = new ChaseCamera2(cam, inputManager)
+        // Camera
+        chaseCam = new ChaseCamera2(cam, inputManager)
 
-    // Action
-    new SmileWorld(assetManager, worldNode)
-    createHero()
-  }
+        // Action
+        new SmileWorld(assetManager, worldNode)
+        createHero()
+    }
 
-  def createHero() {
-    val hero = new MmObject()
-    // Hero Graphics
-    val heroGfx = new HeroGfx(assetManager, chaseCam, hero)
-    heroGfx.geom addControl chaseCam
-    worldNode attachChild heroGfx.geom
-    stateManager attach heroGfx
-    // Hero Input
-    new HeroInput(inputManager, hero, chaseCam, heroGfx.geom)
-  }
+    def createHero() {
+        val hero = new MmObject()
+        // Hero Graphics
+        val heroGfx = new HeroGfx(assetManager, chaseCam, hero)
+        heroGfx.geom addControl chaseCam
+        worldNode attachChild heroGfx.geom
+        stateManager attach heroGfx
+        // Hero Input
+        new HeroInput(inputManager, hero, chaseCam, heroGfx.geom)
+    }
 }
