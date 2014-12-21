@@ -22,11 +22,12 @@ object main extends SimpleApplication2 with App {
         chaseCam = new ChaseCamera2(cam, inputManager)
 
         // Action
-        new SmileWorld(assetManager, worldNode)
-        createHero()
+        val heroGeom = createHero()
+        val smileWorld = new SmileWorld(assetManager, worldNode, heroGeom)
+        stateManager attach smileWorld
     }
 
-    def createHero() {
+    def createHero(): Node = {
         val hero = new MmObject()
         // Hero Graphics
         val heroGfx = new HeroGfx(assetManager, chaseCam, hero)
@@ -35,5 +36,6 @@ object main extends SimpleApplication2 with App {
         stateManager attach heroGfx
         // Hero Input
         new HeroInput(inputManager, hero, chaseCam, heroGfx.geom)
+        heroGfx.geom
     }
 }

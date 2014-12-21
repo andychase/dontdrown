@@ -28,19 +28,19 @@ class HeroInput(inputManager: InputManager, parent: MmObject, cam: ChaseCamera2,
 
         parent.moving = true
 
-        if (name.equals("moveForward") && testLoc(-r, f)) {
+        if (name.equals("moveForward")) {
             geom.move(-r, 0, f)
             forward()
         }
-        if (name.equals("moveBackward") && testLoc(r, -f)) {
+        if (name.equals("moveBackward")) {
             geom.move(r, 0, -f)
             backward()
         }
-        if (name.equals("moveRight") && testLoc(-r2, f2)) {
+        if (name.equals("moveRight")) {
             geom.move(-r2, 0, f2)
             right()
         }
-        if (name.equals("moveLeft") && testLoc(r2, -f2)) {
+        if (name.equals("moveLeft")) {
             geom.move(r2, 0, -f2)
             left()
         }
