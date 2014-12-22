@@ -17,5 +17,5 @@ libraryDependencies ++= Seq(
     "com.jme3" % "jme3-terrain" % "3.0.+",
     "com.jme3" % "jme3-desktop" % "3.0.+",
     "com.jme3" % "jme3-lwjgl" % "3.0.+",
-    "default" % "papermm-assets" % "1.0"
+    "default" % "papermm-assets" % "1.1-dontsink"
 )

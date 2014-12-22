@@ -3,7 +3,7 @@ package papermm
 import com.jme3.renderer.queue.RenderQueue.ShadowMode
 import com.jme3.scene.Node
 import papermm.actors.MmObject
-import papermm.engine.{ChaseCamera2, HeroInput, SimpleApplication2, SunMoonSsao}
+import papermm.engine._
 import papermm.resources.HeroGfx
 import papermm.worlds.SmileWorld
 
@@ -13,9 +13,11 @@ object main extends SimpleApplication2 with App {
 
     def simpleInitApp() {
         rootNode attachChild worldNode
+        setDisplayFps(false)
 
         // Lights
         val sunMoonSsao = new SunMoonSsao(worldNode)
+        sunMoonSsao.enabled = false
         stateManager attach sunMoonSsao
 
         // Camera
@@ -24,7 +26,16 @@ object main extends SimpleApplication2 with App {
         // Action
         val heroGeom = createHero()
         val smileWorld = new SmileWorld(assetManager, worldNode, heroGeom)
-        stateManager attach smileWorld
+        val sinkingEngine = new SinkingEngine(heroGeom, smileWorld.terrain)
+        sinkingEngine.enabled = false
+        stateManager attach sinkingEngine
+
+        // Title
+        val titleEngine = new TitleEngine(heroGeom, sinkingEngine, sunMoonSsao)
+        stateManager attach titleEngine
+        // Lose
+        val loseEngine = new LoseEngine(heroGeom, sinkingEngine, sunMoonSsao)
+        stateManager attach loseEngine
     }
 
     def createHero(): Node = {

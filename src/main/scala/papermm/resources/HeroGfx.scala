@@ -18,7 +18,8 @@ class HeroGfx(assetManager: AssetManager, cam: ChaseCamera2, parent: MmObject) e
     val hero_geom = new Geometry("Sphere", mesh)
     hero_geom.move(-.405f, 0, 0)
     geom attachChild hero_geom
-    geom.move(3f, -.5f, 3f)
+    //geom.move(2f, -.5f, 3f)
+    geom.move(1.5f, 4-.5f, 1.5f)
     val heroTextures = new HeroTextures(assetManager)
     val mat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md")
     val bControl = new BillboardControl()
