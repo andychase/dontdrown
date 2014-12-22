@@ -25,4 +25,6 @@ public class ChaseCamera2 extends ChaseCamera {
     public Float getRotation() {
         return rotation;
     }
+
+    protected void zoomCamera(float value) {}
 }
