@@ -4,7 +4,7 @@ import com.jme3.renderer.queue.RenderQueue.ShadowMode
 import com.jme3.scene.Node
 import papermm.actors.MmObject
 import papermm.engine._
-import papermm.resources.HeroGfx
+import papermm.resources.{PaperAssets, HeroGfx}
 import papermm.worlds.SmileWorld
 
 object main extends SimpleApplication2 with App {
@@ -14,6 +14,7 @@ object main extends SimpleApplication2 with App {
     def simpleInitApp() {
         rootNode attachChild worldNode
         setDisplayFps(false)
+        PaperAssets.AddAssetToClassLoader(assetManager)
 
         // Lights
         val sunMoonSsao = new SunMoonSsao(worldNode)

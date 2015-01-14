@@ -6,6 +6,8 @@ import com.jme3.scene.plugins.blender.textures.TextureHelper
 import com.jme3.texture.Texture.{MagFilter, MinFilter}
 import papermm.resources.Facing._
 
+import scala.util.Try
+
 class HeroTextures(assetManager: AssetManager) {
     private val (baseTexture, forwardSprites, backSprites, leftSprites, rightSprites) = setup()
     val texture = baseTexture
@@ -44,7 +46,7 @@ class HeroTextures(assetManager: AssetManager) {
     }
 
     private def setup() = {
-        val texture = assetManager.loadTexture("Textures/hero.png")
+        val texture = Try(assetManager.loadTexture("hero.png")) getOrElse { assetManager.loadTexture("Textures/hero.png") }
         val img = texture.getImage
 
         val b = new BlenderContext()

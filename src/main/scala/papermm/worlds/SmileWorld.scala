@@ -11,6 +11,8 @@ import com.jme3.scene.{Geometry, Node}
 import com.jme3.terrain.geomipmap.TerrainQuad
 import com.jme3.terrain.heightmap.ImageBasedHeightMap
 
+import scala.util.Try
+
 class SmileWorld(assetManager: AssetManager, node: Node, val heroNode: Node) {
     val geom = new Node("SmileWorld")
     node attachChild geom
@@ -88,7 +90,8 @@ class SmileWorld(assetManager: AssetManager, node: Node, val heroNode: Node) {
         terrain move(0, -2.05f - .5f, 0)
         terrain scale(1, .011764f, 1)
         val mat_brick = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md")
-        mat_brick.setTexture("DiffuseMap", assetManager.loadTexture("Textures/terrain.png"))
+        val terrainTexture = Try(assetManager.loadTexture("terrain.png")) getOrElse { assetManager.loadTexture("Textures/terrain.png") }
+        mat_brick.setTexture("DiffuseMap", terrainTexture)
         terrain setMaterial mat_brick
         terrain.setShadowMode(ShadowMode.Receive)
         geom attachChild terrain
