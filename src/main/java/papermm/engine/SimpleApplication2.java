@@ -103,17 +103,8 @@ public abstract class SimpleApplication2 extends Application {
 
     public SimpleApplication2() {
         super();
-
         settings = new AppSettings(true);
         settings.setTitle("Prototype");
-        try {
-            settings.setIcons(new BufferedImage[]{
-                    ImageIO.read(getClass().getResourceAsStream("/Icons/128.png")),
-                    ImageIO.read(getClass().getResourceAsStream("/Icons/32.png")),
-                    ImageIO.read(getClass().getResourceAsStream("/Icons/16.png")),
-            });
-        } catch (IOException ignored) {
-        }
         start();
     }
 
