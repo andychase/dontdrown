@@ -1,9 +1,17 @@
+import com.github.retronym.SbtOneJar._
+
+oneJarSettings
+
+scalacOptions += "-target:jvm-1.7"
+
 name := "papermm"
 
 resolvers ++= Seq(
     "JME3 Snapshots" at "http://updates.jmonkeyengine.org/maven/",
     "papermm-assets" at "http://papermm-assets.s3-website-us-west-2.amazonaws.com/"
 )
+
+scalacOptions += "-target:jvm-1.7"
 
 // You can put assets here so you can try out changes without re-building a jar file
 unmanagedResourceDirectories in Compile += baseDirectory.value / "assets"
