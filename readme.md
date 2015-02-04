@@ -1,9 +1,9 @@
-# Papermm
+# Don't Drown
 
-In development MMO client written in Scala using the [JME3](http://jmonkeyengine.org/) engine.
+Minigame about sinking written in Scala using the [JME3](http://jmonkeyengine.org/) engine.
 
-![day screenshot](screenshots/day.png)
-![night screenshot](screenshots/night.png)
+![title card screenshot](screenshots/screenshot1.png)
+![in action screenshot](screenshots/screenshot2.png)
 
 
 ## Building/Running
