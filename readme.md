@@ -4,6 +4,7 @@ Minigame about sinking written in Scala using the [JME3](http://jmonkeyengine.or
 
 ![title card screenshot](screenshots/screenshot1.png)
 ![in action screenshot](screenshots/screenshot2.png)
+![in action screenshot 2](screenshots/screenshot3.png)
 
 
 ## Building/Running
